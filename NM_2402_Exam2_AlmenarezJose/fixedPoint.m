@@ -1,4 +1,4 @@
-% newton.m
+% fixedPoint.m
 %Function to implement fixed point method to solve g(x)=x
 % usage
 % [x,gval,niter] = fixedPoint(g, x0, RelTol, MaxIter)
@@ -11,24 +11,20 @@
 %gval: g(x) value of g(x), It should be close to x
 %niter: number of Iterations
 
-function [x,fval,niter] = newton(f,fprime,x0,RelTol,MaxIter)
+function [x,gval,niter] = fixedPoint(g,x0,RelTol,MaxIter)
     %Set x to the initial value
-    x = x0;
+    x= x0;
     niter = 0;
-    relE = RelTol +1;
-    fval = f(x);
-    while relE > RelTol && niter < MaxIter
-        if fval == 0
-            return
-        end
-        
-        x = x-fval/fprime(x);
+    gval = g(x);
+    RelE = RelTol +1;
+    while RelE > RelTol && niter < MaxIter
+        x = gval;
         niter = niter +1;
-        fval = f(x);
+        gval = g(x);
         if x~=0
-            relE = abs((x-fval)/x);
+            RelE = abs((x-gval)/x);
         else
-            relE = abs(x-fval);
+            RelE = abs(x-gval);
         end
     end
 end

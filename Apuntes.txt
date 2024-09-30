@@ -1,0 +1,14 @@
+2) Solución de operaciones de una variable
+Sea f: R -> R, se busca el (los) valores de x tal que f(x) = 0
+
+
+1er método
+Método de disección
+Si tienes una función f continua en un Intervalo [a,b]
+y sucede que f(a) y f(b) tienen signos contrarios, debe existir al menos un punto que pase por 0
+Después se toma un promedio a+b/(2^n)
+
+Lo que se hace es probar en un intervalo, después se comprueba si la solución puede estar en el intervalo
+Entonces se parte el intervalo a la mitad y se busca si puede existir solución en alguno de los dos pedazos de intervalo
+Después se vuelve a partir el intervalo n veces hasta acercarse a la solución
+Donde la magnitud del error es del orden de 1/2^n

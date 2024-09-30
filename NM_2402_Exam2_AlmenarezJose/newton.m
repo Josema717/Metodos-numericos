@@ -15,13 +15,12 @@ function [x,fval,niter] = newton(f,fprime,x0,RelTol,MaxIter)
     %Set x to the initial value
     x = x0;
     niter = 0;
-    relE = RelTol +1;
     fval = f(x);
+    relE = RelTol +1;
     while relE > RelTol && niter < MaxIter
         if fval == 0
             return
         end
-        
         x = x-fval/fprime(x);
         niter = niter +1;
         fval = f(x);
