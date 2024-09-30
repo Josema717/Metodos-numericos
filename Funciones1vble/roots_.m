@@ -12,25 +12,25 @@
 % rootsVector : vector with roots P(x)
 
 function rootsVector = roots_(P,RelTol,MaxIter)
-    % set initial guess
-    n= length(P)-1;
-    x0 = 0;
-    i=1;
-    rootsVector = zeros(n,1);
-    while i<=n
-        [p,fval,niter,Q] =  newtonPoly(P,x0,RelTol,MaxIter);
-        if p~=0
-          relE = abs(fval/p);
-        else
-          relE = abs(fval);
-        end
-        if relE<RelTol && niter<MaxIter
-          P = Q;
-          rootsVector(i) = p;
-          i = i+1;
-        else
-           % change initial guess for a complex number
-           x0 = j;
-        end
-    end
-   end
+ % set initial guess
+ n= length(P)-1;
+ x0 = 0;
+ i=1;
+ rootsVector = zeros(n,1);
+ while i<=n
+     [p,fval,niter,Q] =  newtonPoly(P,x0,RelTol,MaxIter);
+     if p~=0
+       relE = abs(fval/p);
+     else
+       relE = abs(fval);
+     end
+     if relE<RelTol && niter<MaxIter
+       P = Q;
+       rootsVector(i) = p;
+       i = i+1;
+     else
+        % change initial guess for a complex number
+        x0 = j;
+     end
+ end
+end
